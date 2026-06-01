@@ -94,7 +94,9 @@ You can find some other ways to authenticate to Route53 in the [go sdk configura
 
 ## AWS European Sovereign Cloud (aws.eu)
 
-You can use AWS European Sovereign Cloud API endpoints by defining "eusc-de-east-1" to Region variable in `creds.json`. AWS ESC doesn't support domain registration endpoints. Currently you'll need to use global AWS to register domains with Route 53.
+You can use AWS European Sovereign Cloud API endpoints by defining "eusc-de-east-1" to Region variable in `creds.json`. By default global AWS uses region "us-east-1" and you don't need to define it explicitly.
+
+Notice that AWS ESC doesn't support domain registration endpoints. Currently you'll need to use global AWS to register domains with Route 53.
 
 ## Metadata
 
