@@ -151,6 +151,12 @@ func init() {
 		Notes:       "Route53 supports several auth methods: a named profile from ~/.aws/config (including AWS IAM Identity Center / SSO), static access keys, or the SDK's default credential chain (environment variables, EC2 instance role, etc.). RoleArn can be layered on top of any of these.",
 		Fields: []providers.CredsField{
 			{
+				Key:    "Region",
+				Label:  "AWS Region to use for Route 53 control plane (optional)",
+				Help:   "Leave blank to use default global Route 53 in us-east-1. Type \"eusc-de-east-1\" for AWS European Sovereign Cloud.",
+				EnvVar: "AWS_DEFAULT_REGION",
+			},
+			{
 				Key:      "_authMethod",
 				Label:    "Which authentication method do you want to use?",
 				Help:     "Named profile reads ~/.aws/config and supports SSO. Static access key uses KeyId/SecretKey. Default credential chain relies on the AWS SDK to discover credentials from the environment or instance role.",
@@ -168,7 +174,7 @@ func init() {
 			{
 				Key:      "KeyId",
 				Label:    "AWS access key ID",
-				Help:     "The AWS_ACCESS_KEY_ID for an IAM user or role with Route 53 permissions.",
+			Help:     "The AWS_ACCESS_KEY_ID for an IAM user or role with Route 53 permissions.",
 				EnvVar:   "AWS_ACCESS_KEY_ID",
 				Required: true,
 				ShowIf:   map[string]string{"_authMethod": "Static access key"},
