@@ -180,7 +180,7 @@ func init() {
 			{
 				Key:      "KeyId",
 				Label:    "AWS access key ID",
-			Help:     "The AWS_ACCESS_KEY_ID for an IAM user or role with Route 53 permissions.",
+				Help:     "The AWS_ACCESS_KEY_ID for an IAM user or role with Route 53 permissions.",
 				EnvVar:   "AWS_ACCESS_KEY_ID",
 				Required: true,
 				ShowIf:   map[string]string{"_authMethod": "Static access key"},
