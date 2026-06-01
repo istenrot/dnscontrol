@@ -41,7 +41,7 @@ type route53Provider struct {
 
 func newRoute53Reg(conf map[string]string) (providers.Registrar, error) {
 	// AWS European Sovereign Cloud (aws.eu) does not support registering domains, at least not yet.
-	// Let us assume only the global AWS is capable of registering domains curerntly.
+	// Let us assume only the global AWS is capable of registering domains currently.
 	if conf["Region"] != "" && conf["Region"] != "us-east-1" {
 		return nil, errors.New("Error! Domain register endpoint is only supported on the global AWS region us-east-1.")
 	} else {
