@@ -57,7 +57,7 @@ func newRoute53(m map[string]string, _ json.RawMessage) (*route53Provider, error
 	optFns := []func(*config.LoadOptions) error{ }
 
 	if m["Region"] != "" {
-		// AWS European Sovereign Cloud (aws.eu) uses its own endpoint and does not support route53domains.
+		// AWS European Sovereign Cloud (aws.eu) region eusc-de-east-1 uses a separate Route 53 API endpoint from the global AWS
 		optFns = append(optFns, config.WithRegion(m["Region"]))
 	} else {
 		// Route53 uses a global endpoint and route53domains
