@@ -48,11 +48,16 @@ func newRoute53Dsp(conf map[string]string, metadata json.RawMessage) (providers.
 }
 
 func newRoute53(m map[string]string, _ json.RawMessage) (*route53Provider, error) {
-	optFns := []func(*config.LoadOptions) error{
+	optFns := []func(*config.LoadOptions) error{ }
+
+	if m["Region"] != "" {
+		// AWS European Sovereign Cloud (aws.eu) uses its own endpoint and does not support route53domains.
+		optFns = append(optFns, config.WithRegion(m["Region"]))
+	} else {
 		// Route53 uses a global endpoint and route53domains
 		// currently only has a single regional endpoint in us-east-1
 		// https://docs.aws.amazon.com/general/latest/gr/rande.html#r53_region
-		config.WithRegion("us-east-1"),
+		optFns = append(optFns, config.WithRegion("us-east-1"))
 	}
 
 	keyID, secretKey, tokenID, roleArn, externalID := m["KeyId"], m["SecretKey"], m["Token"], m["RoleArn"], m["ExternalId"]
