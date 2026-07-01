@@ -148,6 +148,7 @@ func init() {
 	providers.RegisterDomainServiceProviderType(providerName, fns, features)
 	providers.RegisterRegistrarType(providerName, newRoute53Reg)
 	providers.RegisterCustomRecordType("R53_ALIAS", providerName, "")
+	providers.RegisterCustomRecordType("R53_TAG", providerName, "")
 	providers.RegisterMaintainer(providerName, providerMaintainer)
 	providers.RegisterCredsMetadata(providerName, providers.CredsMetadata{
 		DisplayName: "Amazon Route 53",
